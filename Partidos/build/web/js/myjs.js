@@ -20,7 +20,7 @@ function onshowInfo(){
         type: "GET",
         url: "Controller?op=info&idpartido="+idpartido+"&local="+local+"&visitante="+visitante,
         success : function(info) {
-            $(".modal-body").html(info);     
+            $("#modalInfo .modal-body").html(info);     
         }
       });
     })

@@ -39,7 +39,7 @@
      <%
                 List<Jornada> jornadas = (List<Jornada>) session.getAttribute("jornadas");
                 Usuario usuario = (Usuario) session.getAttribute("usuario");
-                
+                String msg = (String)session.getAttribute("msg");
     %>
     
     <div class="container">
@@ -204,7 +204,13 @@
     </div>
   </div>
 </div>
-
+<div id="tostadaMsg" data-delay="4000" class="toast mx-auto mt-5 bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <%if (msg!=null) {%>
+            <strong class="mr-auto"><%=msg%></strong>
+        <%}%>
+    </div>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -215,6 +221,14 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="js/myjs.js"></script>
+    
+    <%if (msg!=null) {%>
+        <script>
+            $('#tostadaMsg').toast('show')
+        </script>
+        <%
+        session.removeAttribute("msg");
+    }%>
    
 </body>
 

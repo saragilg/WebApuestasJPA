@@ -140,6 +140,8 @@ public class Controller extends HttpServlet {
                     em.persist(porra);
                     transaccion.commit();
            
+                    session.setAttribute("msg", "Apuesta realizada.");
+                    
                     dispatcher = request.getRequestDispatcher("home.jsp");
                     dispatcher.forward(request, response);
                 }
